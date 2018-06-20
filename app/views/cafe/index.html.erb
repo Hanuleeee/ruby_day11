@@ -1,0 +1,20 @@
+<h2>카페 목록</h2>
+<hr/>
+<table>
+    <tr>
+        <td>Num</td>
+        <td>Title</td>
+        <td>Description</td>
+    </tr>
+    <% i=1 %>
+    <% @cafe.each do |cafe| %>
+    <tr>
+        <td><%= i %></td>
+        <td><%= cafe.title %></td>
+        <td><%= cafe.description %></td>
+    </tr>
+    <% i= i+1 %>
+    <% end %>
+</table>
+<%=link_to "카페만들기", "">
+    

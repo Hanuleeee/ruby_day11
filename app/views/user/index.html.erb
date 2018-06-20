@@ -1,0 +1,15 @@
+<% if @current_user.nil? %>
+    <!-- 로그인되지 않은 상태 -->
+    <%= link_to 'Login', '/sign_in' %>
+    <%=link_to "회원가입","/user/sign_up" %>
+<%else%>
+    <!-- 로그인된 상태 -->
+    <p>현재 로그인된 유저: <%= @current_user.user_id %></p>
+    <%=link_to 'Logout', '/logout' %>
+<% end %>
+<ul>
+    <% @Users.each do |user| %>
+        <a href = "/user/<%=user.id%>"><%=user.user_id%></a>
+        <small><%=user.ip_address%></small><br/>
+    <% end %>
+</ul>
