@@ -1,5 +1,6 @@
-<%= form_tag("/boards") do %> <!-- form_tag를 쓰면 authenti- token 을 안써도됨 -->
-    <%= text_field_tag(:title) %>
+<%= form_tag("/boards") do %> <!-- form_tag를 쓰면 authenti-token 을 안써도됨 -->
+    <%= text_field_tag(:title) %><br/><br>
     <%= text_area_tag(:contents) %>
     <%= submit_tag("작성하기") %>
 <% end %>
+

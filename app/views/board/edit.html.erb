@@ -1,5 +1,15 @@
+<div class="card">
 <%= form_tag("/board/#{@post.id}", method: "patch") do %> 
-    <%= text_field_tag(:title, @post.title) %>
-    <%= text_area_tag(:contents, @post.contents) %>
-    <%= submit_tag("수정하기") %>
+    <div class="card-header">
+        <%= text_field_tag(:title, @post.title, class:"card-title") %>        
+    </div>
+    <div class="card-body">
+    <%= text_area_tag(:contents, @post.contents, class:"card-text") %><br/>
+    <%= submit_tag("수정하기", class:"btn btn-primary") %>
+    </div>
 <% end %>
+</div>
+
+
+
+

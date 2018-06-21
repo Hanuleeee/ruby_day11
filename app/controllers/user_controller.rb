@@ -1,7 +1,7 @@
 class UserController < ApplicationController
   def index
     @Users = User.all
-    @current_user = User.find(session[:current_user]) if session[:current_user]
+    @current_user = User.find(session[:current_user]) if session[:current_user] # 꺼내서 쓸 때 
   end
 
   def sign_up
@@ -47,7 +47,8 @@ class UserController < ApplicationController
     id = params[:user_id]
     pw = params[:password]
     user = User.find_by_user_id(id) #find는 id column밖에 못찾음 Thus, user_id로 찾기위해서 find_by_user_id를 사용
-    if !user.nil? and user.password.eql?(pw)
+    # If. where을 사용해서 찾으면, if !user.empty?라고 해야함 
+    if !user.nil? and user.password.eql?(pw)   # or if !user.present? 
       # 해당 user_id로 가입한 유저가 있고, 패스워드도 일치하는 경우
       session[:current_user] = user.id
       flash[:success] = "로그인에 성공했습니다."

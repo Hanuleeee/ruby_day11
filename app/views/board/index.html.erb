@@ -1,6 +1,23 @@
-<div>
-    <% @posts.each do |post| %>
-    <a href="/board/<% post.id%>"><% post.title %></a>
-    <% end %>
-</div>
-<%= link_to "새글쓰기", "/board/new" %>
+<h2>글 목록</h2>
+<hr/>
+<%= link_to "새글쓰기", "/board/new" %><br/><br/>
+<table class="table">
+    <thread>
+        <tr>
+            <td scope="col">Num</td>
+            <td scope="col">제목</td>
+            <td scope="col">작성일</td>
+        </tr>
+    </thread>
+    <tbady>
+        <% i=1 %>
+        <% @posts.reverse.each do |post| %>
+        <tr>
+            <th scope="row"><%= i %></th>
+            <td><a href="/board/<%= post.id%>"><%= post.title %></a></td>
+            <td><%= post.created_at %></td>
+        </tr>
+        <% i= i+1 %>
+        <% end %>
+    </tbady>
+</table>

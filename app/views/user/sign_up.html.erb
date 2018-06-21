@@ -1,6 +1,12 @@
-<h2>회원가입</h2>
-<%= form_tag("/users") do %>
-    <%= text_field_tag(:user_id)%>
-    <%= password_field_tag(:password)%>
-    <%= submit_tag("회원가입")%>
-<% end %>
+ <body class="text-center">
+    <%= form_tag("/users") do %>
+      <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">회 원 가 입</h1>
+      <label for="inputEmail" class="sr-only">ID</label>
+      <%= text_field_tag 'user_id',nil, placeholder:'Enter ID', class:'form-control' %>
+      <label for="inputPassword" class="sr-only">Password</label> 
+      <%= password_field_tag 'password',nil, placeholder:'Enter Password', class:'form-control' %><br/>
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit">SIGN-UP</button>
+    <% end %>
+</body>

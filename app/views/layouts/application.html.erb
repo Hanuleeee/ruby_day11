@@ -9,9 +9,31 @@
   </head>
 
   <body>
+    <header>
+      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+      <h5 class="my-0 mr-md-auto font-weight-normal">My Board /0.0\</h5>
+      <a class="p-2 text-dark" href="/">HOME</a>
+      <a class="p-2 text-dark" href="/board/new">POST</a>
+      <a class="p-2 text-dark" href="/users">USERS</a>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <% unless user_signed_in? %> 
+          <!-- 로그인되지 않은 상태 -->
+          <a class="btn btn-outline-warning" href="/sign_in">LOGIN</a>
+          <a class="btn btn-outline-warning" href="user/sign_up">SIGN-UP</a> 
+        <%else%>
+          <!-- 로그인된 상태 -->
+          <a class="btn btn-outline-warning" href="/logout">LOGOUT</a>
+        <% end %>
+      </nav>
+    </div>
+  
+</header>
+    
+    <div class="container">
     <% flash.each do |k,v| %>
     <p><%=v%></p>
     <% end %>
     <%= yield %>
+    </div>
   </body>
 </html>

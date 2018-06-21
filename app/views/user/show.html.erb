@@ -1,4 +1,13 @@
-<h2><%=@user.user_id%></h2>
-    <small>Last Login At : <%=@user.ip_address%></small><br>
-<%=link_to "목록", "/users"%>
-<%=link_to "수정", "/user/#{@user.id}/edit" %>
+<h3>아이디 : <%= @user.user_id %></h3>
+<p>( Last login at : <%=@user.ip_address %> )</p>
+<hr/>
+<% @user.posts.each do |post| %>
+<div class="card border-info mb-3" style="max-width: 18rem;">
+  <div class="card-header"><%= link_to post.title, "/board/#{post.id}" %></div>
+  <div class="card-body text-info">
+    <h5 class="card-title"><%= post.contents %></h5>
+  </div>
+</div>
+<% end %>
+
+<%=link_to "User List", "/users", class:"btn btn-primary"%>

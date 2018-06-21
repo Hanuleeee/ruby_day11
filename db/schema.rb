@@ -13,19 +13,26 @@
 ActiveRecord::Schema.define(version: 20180620041010) do
 
   create_table "caves", force: :cascade do |t|
-    t.string "title"
-    t.text   "description"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text   "contents"
+    t.string   "title"
+    t.text     "contents"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "user_id"
-    t.string "password"
-    t.string "ip_address"
+    t.string   "user_id"
+    t.string   "password"
+    t.string   "ip_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
