@@ -10,6 +10,8 @@ class BoardController < ApplicationController
   
   def index
     @posts = Post.all
+    @current_user = current_user
+    @title = "여기는 제목"
     p current_user #application_controller에서 정의된 method
   end
 
@@ -20,12 +22,12 @@ class BoardController < ApplicationController
   end
   
   def create
-    post = Post.new
-    post.title = params[:title]
-    post.contents = params[:contents]
-    post.user_id = current_user.id # rails c에서 한것 처럼!
-    # 외래키 
-    post.save
+    # new + save를 한꺼번에 진행하는 create 메서드
+    post = Post.create(post_params)
+    #post.title = params[:title]
+    #post.contents = params[:contents]
+    #post.user_id = current_user.id # 외래키 #current_user도 하나의 메소드인데 변수처럼 사용가능
+    #post.save
     # post를 등록할 때 이글을 작성한 사람은 현재 로그인되어 있는 유저이다.
   
     redirect_to "/board/#{post.id}"
@@ -35,9 +37,11 @@ class BoardController < ApplicationController
   end
   
   def update
-    @post.title = params[:title]
-    @post.contents = params[:contents]
-    @post.save
+    # 원래 있던 내용물을 바로 update시킴
+    @post.update(post_params)
+    #@post.title = params[:title]
+    #@post.contents = params[:contents]
+    #@post.save
     redirect_to "/board/#{@post.id}"
   end
   
@@ -48,6 +52,12 @@ class BoardController < ApplicationController
   
   def set_post
     @post = Post.find(params[:id]) # 반복되는거 한번만 쓰고 method로 지정해서 씀
+  end
+
+  private
+  
+  def post_params
+    {title: params[:title], contents: params[:contents], user_id: current_user.id}
   end
   
 end

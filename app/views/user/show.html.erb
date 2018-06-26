@@ -1,7 +1,7 @@
 <h3>아이디 : <%= @user.user_id %></h3>
 <p>( Last login at : <%=@user.ip_address %> )</p>
 <hr/>
-<% @user.posts.each do |post| %>
+<% @user.posts.each do |post| %> <!--1쪽에서 n을 바라볼때 user.posts하면 여러개 포스트가 나옴-->
 <div class="card border-info mb-3" style="max-width: 18rem;">
   <div class="card-header"><%= link_to post.title, "/board/#{post.id}" %></div>
   <div class="card-body text-info">

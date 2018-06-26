@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration[5.0]
 
       t.string :title
       t.text :contents
-      t.integer :user_id
+      t.integer :user_id  # 외래키가 될 겁니다.
       
       t.timestamps
     end

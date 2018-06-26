@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :themes
     # 지금이 형태가 가장 restful하게 짜여진 route
     root 'board#index'
     get '/boards' => 'board#index'

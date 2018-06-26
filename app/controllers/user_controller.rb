@@ -37,6 +37,7 @@ class UserController < ApplicationController
   end
   
   def sign_in
+    @sign_up ="안돼 돌아가 배고파.."
       # 로그인 되어있는지 확인하고, 
       # 로그인 되어있으면 원래 페이지로 돌아가기
     session.delete(:user_id)
